@@ -40,8 +40,8 @@ export async function POST(req: Request) {
     const text = response.text();
 
     return NextResponse.json({ response: text });
-  } catch (error: any) {
-    console.error('Error en el chat:', error);
+  } catch (error) {
+    console.error('Error en el chat:', error instanceof Error ? error.message : 'Unknown error');
     return NextResponse.json(
       { error: 'Error al procesar tu mensaje' },
       { status: 500 }

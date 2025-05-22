@@ -1,30 +1,14 @@
-'use client'; // Necesario para AnimatePresence y usePathname
+'use client';
 
-import type { Metadata } from "next"; // Metadata puede seguir usándose en Client Components
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Chatbot from "@/components/Chatbot";
 import { AnimatePresence, motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import React from "react"; // Importar React
+import React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
-
-// Metadata no se puede exportar directamente desde un client component de esta forma.
-// Se debe manejar de forma diferente si es necesario, o mantener layout.tsx como server component
-// y crear un componente hijo 'use client' para las animaciones.
-// Por simplicidad ahora, comentaré la exportación de metadata y la pondré como un objeto.
-// Para una solución más robusta, se podría usar la función generateMetadata.
-/*
-export const metadata: Metadata = {
-  title: "Portafolio de Jonathan Serafín",
-  description: "Portafolio profesional de Jonathan Serafín Contreras Malfavón, Desarrollador Full-Stack.",
-};
-*/
-// Si se necesita metadata dinámica, se debe usar generateMetadata en un layout.js/ts (server component)
-// o pasarla como props si este layout fuera un server component que importa un client component.
-// Por ahora, para que funcione 'use client', la metadata estática se puede definir en el Head directamente o no usarla aquí.
 
 export default function RootLayout({
   children,
@@ -33,30 +17,25 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
 
-  // Definir metadata aquí si es estática y se usa 'use client'
-  // O usar el tag <Head> de next/head dentro del return si es necesario
-  // O, idealmente, separar la lógica de 'use client' a un componente hijo.
-
   return (
     <html lang="es">
-      <head> 
-        {/* Metadatos básicos si no se usa la exportación `metadata` */}
+      <head>
         <title>Portafolio de Jonathan Serafín</title>
         <meta name="description" content="Portafolio profesional de Jonathan Serafín Contreras Malfavón, Desarrollador Full-Stack." />
       </head>
-      <body className={`${inter.className} bg-gray-100`}> {/* Añadido un bg general */}
+      <body className={`${inter.className} bg-gray-100`}>
         <Navbar />
         <Chatbot />
-        <AnimatePresence mode="wait"> {/* mode="wait" asegura que la animación de salida termine antes de la de entrada */}
+        <AnimatePresence mode="wait">
           <motion.main
-            key={pathname} // Clave única para cada ruta, fuerza la re-animación
-            className="pt-20" // Padding para el navbar fijo
+            key={pathname}
+            className="pt-20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ 
               duration: 0.3,
-              ease: [0.4, 0, 0.2, 1] // Función de interpolación suave
+              ease: [0.4, 0, 0.2, 1]
             }}
           >
             {children}

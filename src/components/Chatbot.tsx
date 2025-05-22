@@ -51,7 +51,7 @@ export default function Chatbot() {
       } else {
         throw new Error(data.error || 'Error al procesar el mensaje');
       }
-    } catch (error) {
+    } catch {
       setMessages(prev => [...prev, { role: 'bot', content: 'Lo siento, ha ocurrido un error. Por favor, intenta de nuevo.' }]);
     } finally {
       setIsLoading(false);

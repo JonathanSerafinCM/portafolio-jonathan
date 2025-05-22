@@ -167,8 +167,8 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
           >
             <blockquote className="text-2xl font-light italic text-gray-700">
-              "Mi objetivo es crear tecnología que no solo funcione bien,
-              sino que tenga un impacto positivo en la vida de las personas."
+              &ldquo;Mi objetivo es crear tecnología que no solo funcione bien,
+              sino que tenga un impacto positivo en la vida de las personas.&rdquo;
             </blockquote>
           </motion.div>
         </div>
