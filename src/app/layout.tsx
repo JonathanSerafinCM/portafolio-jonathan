@@ -4,6 +4,7 @@ import type { Metadata } from "next"; // Metadata puede seguir usándose en Clie
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Chatbot from "@/components/Chatbot";
 import { AnimatePresence, motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import React from "react"; // Importar React
@@ -45,14 +46,18 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-gray-100`}> {/* Añadido un bg general */}
         <Navbar />
+        <Chatbot />
         <AnimatePresence mode="wait"> {/* mode="wait" asegura que la animación de salida termine antes de la de entrada */}
           <motion.main
             key={pathname} // Clave única para cada ruta, fuerza la re-animación
             className="pt-20" // Padding para el navbar fijo
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ 
+              duration: 0.3,
+              ease: [0.4, 0, 0.2, 1] // Función de interpolación suave
+            }}
           >
             {children}
           </motion.main>
