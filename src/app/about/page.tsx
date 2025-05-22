@@ -53,19 +53,19 @@ const values = [
 // Timeline de experiencia
 const timeline = [
   {
+    year: "2025",
+    title: "AlzIa y Servicio Social",
+    description: "Desarrollo de AlzIa, un asistente virtual para la detección temprana de Alzheimer, ganando el segundo lugar en Innovatecnm. Realización del servicio social en GlucoLife, contribuyendo al desarrollo de soluciones tecnológicas para el sector salud."
+  },
+  {
     year: "2024",
-    title: "Innovatecnm - AlzIa",
-    description: "Desarrollo de un asistente virtual para la detección temprana de Alzheimer, obteniendo el segundo lugar en la fase local."
+    title: "Especialidad y Proyectos Freelance",
+    description: "Elección de la especialidad en Tecnologías en la Nube. Desarrollo de proyectos freelance, incluyendo un sistema de digitalización de menús con IA y otras soluciones personalizadas."
   },
   {
-    year: "2023",
-    title: "Proyectos Freelance",
-    description: "Desarrollo de soluciones personalizadas para clientes, incluyendo un sistema de digitalización de menús con IA."
-  },
-  {
-    year: "2022",
-    title: "Inicio en Cloud Computing",
-    description: "Especialización en tecnologías cloud y comienzo del aprendizaje en servicios de Azure y arquitecturas cloud-native."
+    year: "2021",
+    title: "Inicio en el Tecnológico",
+    description: "Comienzo de la carrera de Ingeniería en Sistemas Computacionales en el Instituto Tecnológico de Morelia, marcando el inicio de mi formación profesional."
   }
 ];
 
@@ -98,7 +98,7 @@ export default function AboutPage() {
                 >
                   <div className="flex flex-col items-center text-center">
                     {value.icon}
-                    <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
+                    <h3 className="text-xl font-semibold mb-3 text-gray-800">{value.title}</h3>
                     <p className="text-gray-600">{value.description}</p>
                   </div>
                 </motion.div>
@@ -119,7 +119,7 @@ export default function AboutPage() {
             variants={containerVariants}
           >
             <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-center mb-12"
+              className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800"
               variants={itemVariants}
             >
               Mi Trayectoria
@@ -130,25 +130,27 @@ export default function AboutPage() {
               <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-200"></div>
 
               {/* Eventos de la línea de tiempo */}
-              {timeline.map((event, index) => (
-                <motion.div
-                  key={index}
-                  className="relative mb-12"
-                  variants={itemVariants}
-                >
-                  <div className={`flex items-center ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}>
-                    <div className="w-5/12"></div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-sky-500 rounded-full border-4 border-white"></div>
-                    <div className="w-5/12 p-4">
-                      <div className="bg-white p-6 rounded-lg shadow-md">
-                        <span className="text-sky-500 font-bold">{event.year}</span>
-                        <h3 className="text-xl font-semibold mt-1">{event.title}</h3>
-                        <p className="text-gray-600 mt-2">{event.description}</p>
+              <div className="relative space-y-12">
+                {timeline.map((event, index) => (
+                  <motion.div
+                    key={index}
+                    className="relative"
+                    variants={itemVariants}
+                  >
+                    <div className={`flex items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} flex-col md:flex-row`}>
+                      <div className="md:w-5/12 w-full"></div>
+                      <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-sky-500 rounded-full border-4 border-white"></div>
+                      <div className="md:w-5/12 w-full p-4">
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                          <span className="text-sky-500 font-bold">{event.year}</span>
+                          <h3 className="text-xl font-semibold mt-1 text-gray-800">{event.title}</h3>
+                          <p className="text-gray-600 mt-2">{event.description}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
@@ -164,7 +166,7 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <blockquote className="text-2xl font-light italic text-gray-600">
+            <blockquote className="text-2xl font-light italic text-gray-700">
               "Mi objetivo es crear tecnología que no solo funcione bien,
               sino que tenga un impacto positivo en la vida de las personas."
             </blockquote>
