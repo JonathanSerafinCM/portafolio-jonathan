@@ -1,10 +1,20 @@
-'use client'; // Necesario para Framer Motion
+'use client';
 
 import ProjectCard from '@/components/ProjectCard';
 import { motion } from 'framer-motion';
 
-// Datos de los proyectos (sin cambios)
+// Datos de los proyectos
 const projectsData = [
+  {
+    id: "glucolifestyle",
+    title: "GlucoLifeStyle.AI - Plataforma para la Mejora de Calidad de Vida de Personas con Diabetes",
+    description: "Responsable de la integración de modelos de lenguaje para análisis de patrones y recomendaciones personalizadas, configuración de pipelines CI/CD, e implementación de sistema de roles y control de consumo de tokens para la API de Gemini.",
+    technologies: ["Laravel", "Docker", "PostgreSQL", "Google Gemini", "GitHub Actions"],
+    imageUrl: "/images/projects/GlucoLifeStyle.IA.png",
+    projectUrl: "#",
+    repoUrl: "#",
+    achievement: "Contribución significativa al desarrollo de un sistema funcional en un entorno colaborativo con sprints y entregables, adquiriendo experiencia en prácticas de desarrollo productivo.",
+  },
   {
     id: "alzia",
     title: "AlzIa - Asistente Virtual para Detección Temprana de Alzheimer",
@@ -14,30 +24,17 @@ const projectsData = [
     projectUrl: "#",
     repoUrl: "#",
     achievement: "Obtención del segundo lugar en la fase local de Innovatecnm y clasificación a la etapa regional.",
-    period: "[Mes, Año - Mes, Año]",
   },
   {
     id: "menu-ia",
     title: "Sistema Freelance de Digitalización de Menús con IA",
     description: "Desarrollo de un sistema para convertir imágenes de menús de restaurantes en formato JSON estructurado, listo para la creación de bases de datos. Implementación de la generación automática de descripciones atractivas para cada platillo utilizando la API de OpenAI.",
-    technologies: ["Django", "Python", "OpenAI API (GPT)"],
-    imageUrl: "/images/projects/menu-ia-placeholder.png",
+    technologies: ["Django", "Python", "OpenAI API (GPT)", "PostgreSQL"],
+    imageUrl: "/images/projects/menu_ia.png",
     projectUrl: "#",
     repoUrl: "#",
     achievement: "Entrega exitosa de una solución funcional que automatiza un proceso manual para el cliente.",
-    period: "[Mes, Año - Mes, Año]",
-  },
-  {
-    id: "los-revolucionarios",
-    title: "Sitio Web 'LosRevolucionarios.com' - Menú de Restaurante",
-    description: "Desarrollo de un menú digital interactivo para un restaurante.",
-    technologies: ["Node.js", "HTML", "CSS"],
-    imageUrl: "/images/projects/revolucionarios-placeholder.png",
-    projectUrl: "#",
-    repoUrl: "#",
-    achievement: "Proyecto ganador en una competencia interna de clase, demostrando habilidades fundamentales en desarrollo web.",
-    period: "[Mes, Año - Mes, Año]",
-  },
+  }
 ];
 
 // Variantes para la animación del contenedor de las tarjetas
@@ -46,7 +43,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2, // Cada tarjeta aparecerá con un retraso de 0.2s
+      staggerChildren: 0.2
     },
   },
 };
@@ -58,7 +55,7 @@ export default function ProjectsPage() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-gray-800"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -77,14 +74,12 @@ export default function ProjectsPage() {
 
         {/* Contenedor para las tarjetas de proyecto con animación */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {projectsData.map((project) => (
-            // ProjectCard ya tiene sus propias variantes 'hidden' y 'visible'
-            // y se animará como hijo del contenedor motion.div
             <ProjectCard key={project.id} project={project} />
           ))}
         </motion.div>
