@@ -1,4 +1,4 @@
-'use client'; // Necesario para Framer Motion
+'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,7 +6,6 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import React from 'react';
 
-// Definición del tipo para las props del ProjectCard
 interface ProjectCardProps {
   project: {
     id: string;
@@ -20,7 +19,6 @@ interface ProjectCardProps {
   };
 }
 
-// Componente ProjectCard
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -33,20 +31,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
   return (
     <motion.div 
-      className="bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-sky-200 hover:scale-[1.03] border border-gray-200 flex flex-col h-full" // Asegurar que todas las tarjetas tengan la misma altura si están en una cuadrícula
+      className="bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-sky-200 hover:scale-[1.03] border border-gray-200 flex flex-col h-full"
       variants={cardVariants}
-      // initial="hidden" // Se controlará desde el componente padre (ProjectsPage)
-      // animate="visible" // Se controlará desde el componente padre (ProjectsPage)
-      // viewport={{ once: true, amount: 0.2 }} // Para animar al hacer scroll si se usa individualmente
     >
       {/* Imagen del proyecto */}
       <div className="relative w-full h-56">
         <Image
-          src={project.imageUrl || "/images/placeholder-project.png"}
+          src={project.imageUrl}
           alt={`Imagen del proyecto ${project.title}`}
-          layout="fill"
-          objectFit="cover"
-          className="transition-transform duration-500 group-hover:scale-110" // group-hover para la tarjeta
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          style={{ objectFit: 'cover' }}
+          className="transition-transform duration-500 group-hover:scale-110"
         />
       </div>
 
