@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar"; // Importar el Navbar
 
 // Configuración de la fuente Inter
 const inter = Inter({ subsets: ["latin"] });
@@ -22,8 +23,9 @@ export default function RootLayout({
     <html lang="es">
       {/* Cuerpo del documento con la fuente Inter aplicada */}
       <body className={inter.className}>
+        <Navbar /> {/* Añadir el Navbar aquí */}
         {/* Aquí se renderizarán las páginas hijas */}
-        {children}
+        <main>{children}</main> {/* Envolver children en un main para mejor semántica */}
       </body>
     </html>
   );
