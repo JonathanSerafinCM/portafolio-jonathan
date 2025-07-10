@@ -126,7 +126,7 @@ export default function Chatbot() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Escribe tu mensaje..."
-                  className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 text-black"
                   disabled={isLoading}
                 />
                 <button
